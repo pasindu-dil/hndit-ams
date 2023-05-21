@@ -1,13 +1,13 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="https://i.ytimg.com/vi/owCNmPV06iY/maxresdefault.jpg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<a href="><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href=""><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href=""><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href=""><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About AMS for HNDIT (Assignment Management System)
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
@@ -21,7 +21,85 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Getting started
+
+## Installation
+
+Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/8.x/installation#installation)
+
+Clone the repository
+
+    git clone https://github.com/pasindu-dil/hndit-ams.git
+
+Switch to the repo folder
+
+    cd hndit-ams
+
+Install all the dependencies using composer
+
+    composer install
+
+Install NPM Dependencies
+
+    npm install
+
+Copy the example env file and make the required configuration changes in the .env file
+
+    copy .env.example .env
+
+Configure the database connection
+
+Next, open the .env file located at the root of your Laravel project and update the DB_CONNECTION, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, and DB_PASSWORD variables to match your MySQL database configuration. Here is an example configuration:
+
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=1521
+    DB_DATABASE=ams
+    DB_USERNAME=root
+    DB_PASSWORD=pass
+
+Generate a new application key
+
+    php artisan key:generate
+
+after run command
+    php artisan storage:link
+
+**_Note_** : After install passport the Client secret and id of Password Grant Client is copy and paste in to MIX_CLIENT_SECRET and MIX_CLIENT_ID in .env.
+
+Run the database migrations (**Set the database connection in .env before migrating**)
+
+    php artisan migrate
+
+**Make sure you set the correct database connection information before running the migrations**
+
+**_Note_** : If you use old database, run `<b>`old-db-changes.sql`</b>` file in your database.
+`<b>`Do not use  "php artisan migrate" command. `</b>`
+
+**_Note_** : It's recommended to have a clean database before seeding. You can refresh your migrations at any point to clean the database by running the following command
+
+    php artisan migrate:refresh
+
+Run the database seeder and you're done
+
+    php artisan db:seed
+
+Run command
+
+    php artisan passport:keys
+    php artisan passport:install
+
+**_Note_** : After add product logo and favicon in `public/images` directory as `product-logo.png`, `product-favicon.png` and update `.env` file `MIX_MYLINEX_LOGO` as `MIX_MYLINEX_LOGO="images/product-logo.png"`, `PRODUCT_FAVICON` as `PRODUCT_FAVICON="images/product-favicon.png"` and update `MIX_AUTO_LOGOUT_TIMER=900`, `MIX_SYSTEM_ALERT_REFRESH_TIMER=60000`, `APP_TYPE=ALL` and `MIX_APP_TYPE=ALL`
+
+**_Note_** : Run these commands
+
+    php artisan route:cache
+    php artisan route:clear
+
+    php artisan config:cache
+    php artisan config:clear
+
+## Learning AMS
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
