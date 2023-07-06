@@ -6,18 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Student extends Model
+class Course extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'reg_id',
-        'nic',
         'name',
-        'email',
-        'address',
-        'msisdn',
-        'course_id',
+        'type',
         'created_by',
         'updated_by',
         'created_at',

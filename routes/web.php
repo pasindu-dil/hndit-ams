@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GoogleAccountController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +26,12 @@ Route::middleware('auth')->group(function () {
     Route::name('google.index')->get('google', [GoogleAccountController::class, 'index']);
     Route::name('google.store')->get('google/oauth', [GoogleAccountController::class, 'store']);
     Route::name('google.destroy')->delete('google/{googleAccount}', [GoogleAccountController::class, 'destroy']);
+
+    // Route::resource([
+    //     'students' => StudentController::class,
+    //     'courses' => CourseController::class
+    // ]);
+    Route::resource('students', [StudentController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
+    Route::resource('courses', [CourseController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
+    Route::resource('subjects', [SubjectController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
 });
