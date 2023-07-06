@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\AssignmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:api', 'XSS'])->group(function ()  {
-    Route::get('/assignment', [AssignmentController::class, 'index']);
-});
+// Route::middleware(['auth:api', 'XSS'])->group(function ()  {
+//     Route::get('/assignment', [AssignmentController::class, 'index']);
+// });

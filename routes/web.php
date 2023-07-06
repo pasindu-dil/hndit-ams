@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GoogleAccountController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,10 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Auth::routes();
 
-Route::get('/', function () {
-    return view('layout.app');
+Route::middleware('auth')->group(function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard.index');
+    Route::get('/assignment', [App\Http\Controllers\HomeController::class, 'index'])->name('assignment.index');
+
+    Route::name('google.index')->get('google', [GoogleAccountController::class, 'index']);
+    Route::name('google.store')->get('google/oauth', [GoogleAccountController::class, 'store']);
+    Route::name('google.destroy')->delete('google/{googleAccount}', [GoogleAccountController::class, 'destroy']);
 });
