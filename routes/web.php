@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\API\AssignmentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GoogleAccountController;
+use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +33,9 @@ Route::middleware('auth')->group(function () {
     //     'students' => StudentController::class,
     //     'courses' => CourseController::class
     // ]);
-    Route::resource('students', [StudentController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
-    Route::resource('courses', [CourseController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
-    Route::resource('subjects', [SubjectController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
+    // Route::resource('student', [StudentController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
+    // Route::resource('course', [CourseController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
+    // Route::resource('subject', [SubjectController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
+    // Route::resource('instructor', [InstructorController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
+    // Route::resource('assignment', [AssignmentController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
 });

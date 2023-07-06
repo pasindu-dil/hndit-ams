@@ -11,19 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assignments', function (Blueprint $table) {
+        Schema::create('instructors', function (Blueprint $table) {
             $table->id();
+            $table->string('full_name', 200);
+            $table->string('name', 200);
+            $table->string('nic', 12);
+            $table->string('email', 200)->nullable();
+            $table->string('institute_email', 200)->nullable();
+            $table->bigInteger('msisdn');
+            $table->enum('status', ['permenent', 'visiting'])->default('permenent');
+            $table->text('address')->nullable();
             $table->string('subject_code', 20);
-            $table->string('name', 100)->nullable();
-            $table->text('description')->nullable();
-            $table->text('file')->nullable();
-            $table->dateTime('start_date')->nullable();
-            $table->dateTime('end_date')->nullable();
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();
             $table->softDeletes();
 
+            $table->unique(['nic', 'email', 'institute_email']);
             $table->foreign('subject_code')->references('code')->on('subjects')->onDelete('no action')->onUpdate('no action');
         });
     }
@@ -33,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assignments');
+        Schema::dropIfExists('instructors');
     }
 };

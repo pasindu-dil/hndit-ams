@@ -6,17 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Assignment extends Model
+class Instructor extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'subject_code',
+        'full_name',
         'name',
-        'description',
-        'file',
-        'start_date',
-        'end_date',
+        'nic',
+        'email',
+        'institute_email',
+        'msisdn',
+        'status',
+        'address',
+        'subject_code',
         'created_by',
         'updated_by',
         'created_at',
