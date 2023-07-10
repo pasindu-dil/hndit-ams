@@ -25,6 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard.index');
     Route::get('/assignment', [App\Http\Controllers\HomeController::class, 'index'])->name('assignment.index');
 
+    Route::post('student', [StudentController::class, 'store']);
+
     Route::name('google.index')->get('google', [GoogleAccountController::class, 'index']);
     Route::name('google.store')->get('google/oauth', [GoogleAccountController::class, 'store']);
     Route::name('google.destroy')->delete('google/{googleAccount}', [GoogleAccountController::class, 'destroy']);
@@ -33,9 +35,15 @@ Route::middleware('auth')->group(function () {
     //     'students' => StudentController::class,
     //     'courses' => CourseController::class
     // ]);
-    // Route::resource('student', [StudentController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
+    // Route::resource('student', 'StudentController')->except('store', 'update', 'destroy', 'show', 'edit');
     // Route::resource('course', [CourseController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
     // Route::resource('subject', [SubjectController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
     // Route::resource('instructor', [InstructorController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
     // Route::resource('assignment', [AssignmentController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
+
+});
+
+
+Route::get('/token', function () {
+    return csrf_token();
 });

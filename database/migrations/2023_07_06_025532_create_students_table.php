@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email', 200);
             $table->text('address')->nullable();
             $table->bigInteger('msisdn')->nullable();
-            $table->unsignedBigInteger('course_id');
+            $table->unsignedInteger('course_id');
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();

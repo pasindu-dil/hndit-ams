@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AssignmentController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,5 @@ use App\Http\Controllers\API\AssignmentController;
 // Route::middleware(['auth:api', 'XSS'])->group(function ()  {
 //     Route::get('/assignment', [AssignmentController::class, 'index']);
 // });
+
+Route::post('student', [StudentController::class, 'store']);
