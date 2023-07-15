@@ -8,6 +8,9 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Upcomming events</h3>
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Add Assignment
+                    </button>
                 </div>
                 <div class="card-body">
                     <div class=col-xl-4">

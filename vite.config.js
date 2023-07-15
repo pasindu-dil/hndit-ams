@@ -13,7 +13,8 @@ export default defineConfig({
                 'resources/js/dashboard.js',
                 'resources/js/require.min.js',
                 'resources/js/core.js',
-                'resources/plugins/input-mask/plugin.js'
+                'resources/plugins/input-mask/plugin.js',
+                'resources/js/jquery.min.js',
             ],
             refresh: true,
         }),

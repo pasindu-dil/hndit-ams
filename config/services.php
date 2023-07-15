@@ -44,11 +44,8 @@ return [
 
         // Let the user know what we will be using from his Google account.
         'scopes' => [
-            // Getting access to the user's email.
-            \Google_Service_Oauth2::USERINFO_EMAIL,
-
-            // Managing the user's calendars and events.
-            \Google_Service_Calendar::CALENDAR,
+            'https://www.googleapis.com/auth/calendar',
+            'https://www.googleapis.com/auth/calendar.events',
         ],
 
         // Enables automatic token refresh.
