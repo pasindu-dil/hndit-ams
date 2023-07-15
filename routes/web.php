@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\API\AssignmentController;
+use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GoogleAccountController;
 use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard.index');
     Route::get('/assignment', [App\Http\Controllers\HomeController::class, 'index'])->name('assignment.index');
 
+    Route::get('student', [StudentController::class, 'index'])->name('student.index');
     Route::post('student', [StudentController::class, 'store']);
+
+    Route::get('assignment', [AssignmentController::class, 'index'])->name('assignment.index');
+
+    Route::get('report', [ReportController::class, 'index'])->name('report.index');
 
     Route::name('google.index')->get('google', [GoogleAccountController::class, 'index']);
     Route::name('google.store')->get('google/oauth', [GoogleAccountController::class, 'store']);
@@ -41,9 +47,4 @@ Route::middleware('auth')->group(function () {
     // Route::resource('instructor', [InstructorController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
     // Route::resource('assignment', [AssignmentController::class])->except('create', 'store', 'update', 'destroy', 'show', 'edit');
 
-});
-
-
-Route::get('/token', function () {
-    return csrf_token();
 });
