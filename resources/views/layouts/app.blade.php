@@ -10,19 +10,15 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/sass/bundle.scss', 'resources/css/app.css', 'resources/css/dashboard.css', 'resources/js/app.js', 'resources/js/require.min.js', 'resources/js/dashboard.js', 'resources/js/core.js', 'resources/plugins/input-mask/plugin.js', 'resources/js/jquery.min.js']);
+    @vite(['resources/sass/app.scss', 'resources/css/app.css', 'resources/js/app.js', 'resources/css/soft-ui-dashboard.min.css', 'resources/js/plugins/perfect-scrollbar.min.js', 'resources/js/soft-ui-dashboard.min.js']);
 </head>
 
-<body>
+<body class="g-sidenav-show  bg-gray-100">
     <div id="app">
         <div class="container">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -76,15 +72,8 @@
             @include('layouts.navbar')
         @endguest
 
-        <main class="page">
-            <div class="container">
-                <div class="page-header">
-                    <h1 class="page-title">
-                        @yield('title')
-                    </h1>
-                </div>
-                @yield('content')
-            </div>
+        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+            @yield('content')
         </main>
 
         @guest
