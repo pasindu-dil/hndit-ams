@@ -28,7 +28,8 @@ class StudentStoreRequest extends FormRequest
             "email" => "required|max:200|email",
             "address" => "nullable",
             "msisdn" => "required|max:11",
-            "course_id" => "required|numeric"
+            "course_id" => "required|numeric",
+            "is_login" => "required|numeric"
         ];
     }
 }

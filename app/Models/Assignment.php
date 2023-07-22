@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Assignment extends Model
 {
@@ -27,12 +28,12 @@ class Assignment extends Model
     {
         parent::boot();
 
-        static::creating(function () {
-
+        static::creating(function (Model $model) {
+            $model->created_by = Auth::user()->id;
         });
 
-        static::updating(function () {
-
+        static::updating(function (Model $model) {
+            $model->updated = Auth::user()->id;
         });
     }
 }

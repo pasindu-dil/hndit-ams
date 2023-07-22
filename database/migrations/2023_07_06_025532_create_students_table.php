@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->bigInteger('msisdn')->nullable();
             $table->unsignedInteger('course_id');
+            $table->tinyInteger('is_login')->default(1);
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();

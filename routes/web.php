@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::post('student', [StudentController::class, 'store']);
 
     Route::get('assignment', [AssignmentController::class, 'index'])->name('assignment.index');
+    Route::post('assignment', [AssignmentController::class, 'store'])->name('assignment.store');
 
     Route::get('report', [ReportController::class, 'index'])->name('report.index');
 

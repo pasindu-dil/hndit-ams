@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SendLoginDetailsNotificationEvent;
 use App\Http\Requests\StudentStoreRequest;
 use App\Http\Requests\StudentUpdateRequest;
 use App\Models\Student;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -41,13 +45,26 @@ class StudentController extends Controller
                     "email" => $studentStoreRequest->email,
                     "address" => $studentStoreRequest->address,
                     "msisdn" => $studentStoreRequest->msisdn,
-                    "course_id" => $studentStoreRequest->course_id
+                    "course_id" => $studentStoreRequest->course_id,
+                    "is_login" => $studentStoreRequest->is_login
                 ]
             );
 
-            return response()->json($created, 200, ["success" => true, "message" => "Successfully created student."]);
+            if ($studentStoreRequest->is_login) {
+                $createdLogin = User::create([
+                    'name' => $studentStoreRequest->name,
+                    'email' => $studentStoreRequest->email,
+                    'password' => Hash::make($studentStoreRequest->nic),
+                ]);
+
+                $createdLogin->assignRole('Student');
+
+                $createdLogin ? SendLoginDetailsNotificationEvent::dispatch($createdLogin->id) : "";
+            }
+
+            return $this->sendResponse($created, "Successfuly added student.");
         } catch (Exception $exception) {
-            return response()->json(config('error.server_error'));
+            return $this->sendError($exception->getMessage());
         }
     }
 
