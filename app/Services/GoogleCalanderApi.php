@@ -4,15 +4,20 @@ namespace App\Services;
 
 class GoogleCalanderApi
 {
+    public string $clientID;
+    public string $clientSecret;
+    public string $redirectUri;
+    public string $authorizationCode;
+
     /**
-     *
+     * Constructor method
      */
     public function __construct()
     {
-        $clientID = 'YOUR_CLIENT_ID';
-        $clientSecret = 'YOUR_CLIENT_SECRET';
-        $redirectUri = 'YOUR_REDIRECT_URI';
-        $authorizationCode = 'THE_AUTHORIZATION_CODE';
+        $this->clientID = config('services.google.client_id');
+        $this->clientSecret = config('services.google.client_secret');
+        $this->redirectUri = config('services.google.redirect_uri');
+        $this->authorizationCode = true;
     }
 
     /**
@@ -20,17 +25,17 @@ class GoogleCalanderApi
      */
     public function getAccessToken()
     {
-        $authorizationCode = true;
-        if ($authorizationCode) {
-            $accessToken = "";
+        $accessToken = "";
 
+        if ($this->authorizationCode) {
             $params = [
-                "code" => config('services.google.redirect_uri'),
-                "client_id" => config('services.google.client_id'),
-                "client_secret" => config('services.google.client_secret'),
-                "redirect_uri" => config('services.google.redirect_uri'),
+                "code" => $this->authorizationCode,
+                "client_id" => $this->clientID,
+                "client_secret" => $this->clientSecret,
+                "redirect_uri" => $this->redirectUri,
                 "grant_type" => "authorization_code"
             ];
+            dd($params);
 
             $tokenURL = config('services.google.auth_uri');
             $ch = curl_init();
@@ -73,7 +78,7 @@ class GoogleCalanderApi
             curl_close($ch);
 
             $events = json_decode($response, true);
-
+            dd($events);
             // Process and display events as needed
             if (isset($events['items'])) {
                 foreach ($events['items'] as $event) {

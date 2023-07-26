@@ -40,6 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::name('google.store')->get('google/oauth', [GoogleAccountController::class, 'store']);
     Route::name('google.destroy')->delete('google/{googleAccount}', [GoogleAccountController::class, 'destroy']);
 
+    Route::get('/calander/events', [AssignmentController::class, 'getCalanderData']);
+
     // Route::resource([
     //     'students' => StudentController::class,
     //     'courses' => CourseController::class

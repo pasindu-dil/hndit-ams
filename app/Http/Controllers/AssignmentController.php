@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Assignment;
+use App\Services\GoogleCalanderApi;
 use Exception;
+use Google\Service\ServiceUsage\GoogleApiService;
 use Google_Client;
 use Illuminate\Http\Request;
 
@@ -15,6 +17,16 @@ class AssignmentController extends Controller
     public function index()
     {
         return view('assignment');
+    }
+
+    public function getCalanderData()
+    {
+        try {
+            $data = (new GoogleCalanderApi)->makeAPIRequest();
+            dd($data);
+        } catch (Exception $exception) {
+            dd($exception);
+        }
     }
 
     /**
