@@ -273,7 +273,6 @@
     </div>
     @vite(['resources/js/plugins/perfect-scrollbar.min.js', 'resources/js/core/popper.min.js', 'resources/js/plugins/smooth-scrollbar.min.js', 'node_modules/jquery/dist/jquery.min.js', 'resources/js/core/bootstrap.min.js', 'resources/js/jquery-validation.min.js'])
     <script>
-
     </script>
 </body>
 

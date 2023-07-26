@@ -38,6 +38,7 @@ return [
 
         // The URL to redirect to after the OAuth process.
         'redirect_uri' => env('GOOGLE_REDIRECT_URI'),
+        'auth_uri' => env('GOOGLE_AUTH_URI'),
 
         // The URL that listens to Google webhook notifications (Part 3).
         'webhook_uri' => env('GOOGLE_WEBHOOK_URI'),

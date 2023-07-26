@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Assignment;
 use Exception;
 use Google_Client;
-use Google_Service_Calendar;
-use Google_Service_Calendar_Event;
 use Illuminate\Http\Request;
 
 class AssignmentController extends Controller

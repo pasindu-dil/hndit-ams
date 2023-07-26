@@ -32,6 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::get('assignment', [AssignmentController::class, 'index'])->name('assignment.index');
     Route::post('assignment', [AssignmentController::class, 'store'])->name('assignment.store');
 
+    Route::get('lecturer', [AssignmentController::class, 'index'])->name('lecturer.index');
+
     Route::get('report', [ReportController::class, 'index'])->name('report.index');
 
     Route::name('google.index')->get('google', [GoogleAccountController::class, 'index']);
